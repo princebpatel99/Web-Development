@@ -2,19 +2,58 @@
 
 <head>
     <script>
-        function doSum(){
-            var first  = document.getElementById("val1").value; // get the values from input box
-            var second  = document.getElementById("val2").value;
-            
+        function doSum() {
+            var first = document.getElementById("val1").value; // get the values from input box
+            var second = document.getElementById("val2").value;
+
             first = parseInt(first)
             second = parseInt(second)
-            alert("sum is :" +(first+second))
+            alert("sum is :" + (first + second))
+        }
+
+        function onMouseHover() {
+            alert('Mouse Hover on Me')
+        }
+
+        function onMouseOut(){
+            alert('Mouse Out')
+        }
+
+        function onTextChange(){
+            alert('Text Change')
+        }
+
+        function onKeyPress(){
+            alert('Key pressed')
         }
     </script>
 </head>
+
 <body>
-    <input id="val1" type="number" name="Enter Value 1"/>
-    <input id="val2" type="number" name="Enter Value 2"/>
-    <input type="submit" value="Calculate" onclick="doSum()"/>
+    <input id="val1" type="number" name="Enter Value 1" />
+    <input id="val2" type="number" name="Enter Value 2" />
+    <input type="submit" value="Calculate" onclick="doSum()" />
+    <br/>
+
+
+    <br />
+    <div style="width:150px;height:150px;background-color: red;" onmouseover="onMouseHover()">
+        Hover Mouse
+    </div>
+
+    <br/>
+    <div style="width:150px;height:150px;background-color: red;" onmouseover="onMouseOut()">
+        Hover Mouse and Out
+    </div>
+
+    <br/>
+    <input type="text" onchange="onTextChange()" placeholder="type some text and click out side"/>
+
+
+    <br/>
+    <br/>
+    <input type="text" onkeydown="onKeyPress()" placeholder="Type something"/>
+
 </body>
+
 </html>
