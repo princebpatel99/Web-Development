@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <style>
+        .redColor{
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <input type="submit" value="Click to see Magic" onclick="doMagic()" />
+
+
+    <p id="demo"></p>
+
+    <input type="text" id="name" value="" />
+
+    <p class="main"></p>
+    <p class="main"></p>
+
+    <img id="myImage" src="">
+
+    <h1></h1>
+
+
+
+
+
+    <script>
+
+        function doMagic() {
+            var id = document.getElementById("demo")// To Update any element by calling ID. (ID should be unique and declare only once)
+            id.innerHTML = "Updated the Value by ID";
+            id.className = "redColor";//applied class dynamically
+
+
+            var x = document.getElementsByClassName("main"); // Class can be multiple so we have to use this way
+            x[0].innerHTML = "Updated the Value by Class";
+            x[1].innerHTML = "Updated the Value by Class Name";
+
+
+            document.getElementById("name").value = "Updated";
+
+            document.getElementById("myImage").src = "https://st2.depositphotos.com/2162897/5641/i/600/depositphotos_56414815-stock-photo-magic-boock.jpg";
+
+
+
+        }
+    </script>
+</body>
+
+</html>
