@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <script>
+        var interval;
+        function showPopUp() {
+            setTimeout(() => {
+                alert("Set Time Out PopUp:");
+            }, 3000);
+        }
+
+        function bulb() {
+            interval = setInterval(() => {
+                var activeBulb = document.getElementById("bulbImg");
+                var activeBulbSrc = activeBulb.src;
+                if (activeBulbSrc == "https://www.w3schools.com/js/pic_bulbon.gif") {
+                    activeBulb.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+                }
+                else {
+                    activeBulb.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+                }
+            }, 500);
+        }
+
+        function StopBlub() {
+            clearInterval(interval);
+        }
+
+
+
+        /*This function is used to set the cookie name*/
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+
+        /*This function is used to get the cookie name*/
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        setCookie("loginDetails","Prince Patel",10);
+
+        var getValue = getCookie("loginDetails");
+        console.log(getValue);
+
+    </script>
+</head>
+
+<body>
+    <input type="submit" value="Click me to see popup after 3 second" onclick="showPopUp()" />
+    <br />
+    <br />
+    <input type="submit" value="Bulb On/Off Automatically" onclick="bulb()" />
+
+    <img id="bulbImg" src="https://www.w3schools.com/js/pic_bulboff.gif" />
+
+    <input type="submit" value="stop blub" onclick="StopBlub()" />
+</body>
+
+</html>
