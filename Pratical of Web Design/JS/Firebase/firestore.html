@@ -1,0 +1,122 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-storage.js"></script>
+    <script src="firestore.js"></script>
+    <script>
+
+        async function main() {
+
+                
+                var x = await Insert("UserDetails", {
+                    City: "Los",
+                    Email: "prince@gmail.com",
+                    Mobile: "9999999999",
+                    Name: "Prince",
+                    Pincode: "456666",
+                    State: "sdsd",
+                    FromDate:Date(2021,05,01),
+                    ToDate:Date(2022,04,04)
+                });
+                console.log(x);
+            
+            
+                // var x = await getItembyID("RegistrationDetails","5ByfD913wmbPZ7VGChro");
+                // console.log(x);
+
+                // var x = await getItemByFilter("RegistrationDetails",['Email', '==', "prince@gmail.com"]);
+                // var x = await getAllItems("RegistrationDetails");
+                // console.log(x);
+
+            // var x = await Update("RegistrationDetails","juXibhumzRNujz91yDkz",{Email: "ketul@gmail.com"});
+            // console.log(x);
+
+
+            // var x = await DeleteByCondition("RegistrationDetails",['Email', '==', "prince@gmail.com"]);
+
+
+            /*delete */
+            // db.collection("RegistrationDetails").doc("3").delete();
+            // var jobskill_query = db.collection('RegistrationDetails').where('Email', '==', "prince@gmail.com");
+            // jobskill_query.get().then(function (querySnapshot) {
+            //     querySnapshot.forEach(function (doc) {
+            //         doc.ref.delete();
+            //     });
+            // });
+
+
+            // const events = await firebase.firestore().collection('RegistrationDetails').get()
+            //     .then(querySnapshot => {
+            //         querySnapshot.docs.map(doc => {
+            //             console.log('LOG 1', doc.data());
+            //             return doc.data();
+            //         });
+            //     });
+            // console.log('LOG 2', events);
+            // return events;
+
+            console.log(Date());
+            var x = await getAllItems('RegistrationDetails');
+            
+            var id=0;
+            x.forEach(element => {
+                id++;
+                $("#mainTable").append("<tr><td>"+id+"</td><td>" + element.Name + "</td><td>" + element.Email + "</td><td>" + element.State + "</td></tr>");
+
+            });
+
+            console.log(Date())
+
+
+
+        }
+
+        main();
+
+
+        async function Upload() {
+            const file = $('#UploadFile').get(0).files[0];
+            const name = (+new Date()) + '-' + file.name;
+            var task = UploadFile(name, file);
+
+            task.on('state_changed',
+                function progress(snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    $("#count").html(percentage + "%")
+                },
+                function complete() {
+
+                }
+            );
+
+            var snapshot = await task;
+            var url = await snapshot.ref.getDownloadURL();
+            console.log(url)
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h2 id="count"></h2>
+    <table id="mainTable" border="1px">
+
+    </table>
+
+
+    <input type="file" id="UploadFile" />
+    <input type="submit" value="Upload" onclick="Upload()" />
+
+</body>
+
+</html>
