@@ -1,0 +1,12 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write;
+    }
+  }
+}
+
+
+
+# under storage on the firebase console and under rules edit the rule to become
