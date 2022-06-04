@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .nav-tabs>li>a {
+            margin: 0;
+        }
+
+        .breadcrumb input[type="radio"] {
+            display: none;
+        }
+
+        .breadcrumb input[type="checkbox"] {
+            display: none;
+        }
+
+        .breadcrumb {
+            background: #ddd;
+            display: inline-block;
+            padding: 1px;
+            padding-right: 14px;
+        }
+
+        .tab-content {
+            padding: 15px;
+        }
+
+        .breadcrumb li {
+            display: inline-block;
+            background: white;
+            padding: 0;
+            position: relative;
+            min-width: 160px;
+            min-height: 40px;
+            padding-left: 50px;
+            padding-top: 5px;
+            text-decoration: none;
+            -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
+            margin-right: -13px;
+        }
+
+        .breadcrumb li#last {
+            -webkit-clip-path: polygon(0 0, calc(100% - 0px) 0, 100% 50%, calc(100% - 0px) 100%, 0 100%, 15px 50%);
+            clip-path: polygon(0 0, calc(100% - 0px) 0, 100% 50%, calc(100% - 0px) 100%, 0 100%, 15px 50%);
+        }
+
+        .nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:focus,
+        .nav-tabs>li.active>a:hover {
+            border-bottom: 2px solid #5cfeea;
+        }
+
+        .breadcrumb li:first-child {
+            -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+        }
+
+        @media (max-width: 408px) {
+            .breadcrumb li {
+                display: inline-block;
+                background: white;
+                padding: 5px 30px 5px 30px;
+                position: relative;
+                min-width: 40%;
+                border: 1px solid black;
+                text-decoration: none;
+                -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+                clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+                padding-left: 20px;
+                margin-right: -13px;
+            }
+
+            .breadcrumb li#last {
+                -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+                clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+                padding-left: 20px;
+            }
+
+            .breadcrumb {
+                background: none;
+                -webkit-filter: drop-shadow(1px 1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black) drop-shadow(-1px -1px 0px black);
+                filter: drop-shadow(1px 1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black) drop-shadow(-1px -1px 0px black);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="breadcrumb">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+            </li>
+            <li role="presentation" class="active">
+                <a href="#office" aria-controls="profile" role="tab" data-toggle="tab">Office</a>
+            </li>
+            <li id="last" role="presentation">
+                <a href="#confirmation" aria-controls="profile" role="tab" data-toggle="tab">Confirm</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="home">Home</div>
+            <div role="tabpanel" class="tab-pane active" id="office">Office</div>
+            <div role="tabpanel" class="tab-pane" id="confirmation">Confirm</div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
